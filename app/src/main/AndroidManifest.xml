@@ -11,15 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PesquisaCpfActivity"></activity>
-        <activity android:name=".FormaActivity" />
-        <activity android:name=".QrCodeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".PesquisaCpfActivity"/>
+        <activity android:name=".listaP">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+        <activity android:name=".listaATV"/>
+        <activity android:name=".listaREF"/>
+        <activity android:name=".FormaActivity" />
+        <activity android:name=".QrCodeActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
