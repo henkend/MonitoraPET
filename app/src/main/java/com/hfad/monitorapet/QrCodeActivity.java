@@ -16,7 +16,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 import static android.content.ContentValues.TAG;
 
-public class SimpleScannerActivity extends Activity implements ZXingScannerView.ResultHandler {
+public class QrCodeActivity extends Activity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
 
     @Override

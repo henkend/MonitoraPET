@@ -1,5 +1,7 @@
 package com.hfad.monitorapet;
 
+import android.provider.Telephony;
+
 import java.util.HashMap;
 
 public class Monitoria {
@@ -43,6 +45,9 @@ public class Monitoria {
 
     private static int refeicao = -1;
 
+    // Participantes
+    private static HashMap<String, String> participantes = new HashMap<>();
+
     public static void Inicializar() {
         // Insere os dados dos monitores
         monitores.put("11166295699", "RODRIGO ALVES CALDEIRA");
@@ -59,7 +64,8 @@ public class Monitoria {
         monitores.put("70919608159", "ISSUFI BADJI");
         monitores.put("62166010326", "NILS MENDES TAVARES");
 
-
+        // Insere os dados dos participantes
+        monitores.put("05543271123", "Herbert de Souza Andrade");
     }
 
     public static boolean validarMonitor(String cpf) {
@@ -99,6 +105,6 @@ public class Monitoria {
     }
 
     public static String[] getRefItens() {
-        return Monitoria.getRefItens();
+        return Monitoria.refItens;
     }
 }
