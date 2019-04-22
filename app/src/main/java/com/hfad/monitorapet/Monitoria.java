@@ -89,4 +89,16 @@ public class Monitoria {
     public static String[] getAtvItens() {
         return Monitoria.atvItens;
     }
+
+    public static void setRefeicoes(int refeicao) {
+        Monitoria.refeicao = refeicao;
+    }
+
+    public static int getRefeicoes() {
+        return Monitoria.refeicao;
+    }
+
+    public static String[] getRefItens() {
+        return Monitoria.getRefItens();
+    }
 }
