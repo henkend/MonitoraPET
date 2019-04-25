@@ -27,10 +27,12 @@ public class listaP extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0) {
+                    Monitoria.setCredenciar(Monitoria.ATIVIDADE);
                     Intent intent = new Intent(getApplicationContext(), listaATV.class);
                     startActivity(intent);
                 }
                 else {
+                    Monitoria.setCredenciar(Monitoria.REFEICOES);
                     Intent intent = new Intent(getApplicationContext(), listaREF.class);
                     startActivity(intent);
                 }

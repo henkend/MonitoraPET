@@ -8,8 +8,8 @@ public class Monitoria {
     private static HashMap<String, String> monitores = new HashMap<>();
 
     // Primeira opção
-    private static final int ATIVIDADE = 0;
-    private static final int REFEICOES = 1;
+    public static final int ATIVIDADE = 0;
+    public static final int REFEICOES = 1;
 
     private static final String [] credItens =
             {"Atividade", "Refeições"};
@@ -17,10 +17,10 @@ public class Monitoria {
     private static int credenciar = -1;
 
     // Atividades
-    private static final int ATV_ED_ED = 0;
-    private static final int ATV_MESA_1 = 1;
-    private static final int ATV_MESA_2 = 2;
-    private static final int ATV_EA_EIMCLAA = 3;
+    public static final int ATV_ED_ED = 0;
+    public static final int ATV_MESA_1 = 1;
+    public static final int ATV_MESA_2 = 2;
+    public static final int ATV_EA_EIMCLAA = 3;
 
     private static final String [] atvItens =
             {"ED / ED", "MESA REDONDA 1", "MESA REDONDA 2", "EA / EIMCLAA"};
@@ -28,15 +28,15 @@ public class Monitoria {
     private static int atividade = -1;
 
     //Refeições
-    private static final int REF_2_4_CAFE = 0;
-    private static final int REF_2_4_ALMOCO = 1;
-    private static final int REF_2_4_JANTAR = 2;
-    private static final int REF_3_4_CAFE = 3;
-    private static final int REF_3_4_ALMOCO = 4;
-    private static final int REF_3_4_JANTAR = 5;
-    private static final int REF_4_4_CAFE = 6;
-    private static final int REF_4_4_ALMOCO = 7;
-    private static final int REF_4_4_JANTAR = 8;
+    public static final int REF_2_4_CAFE = 0;
+    public static final int REF_2_4_ALMOCO = 1;
+    public static final int REF_2_4_JANTAR = 2;
+    public static final int REF_3_4_CAFE = 3;
+    public static final int REF_3_4_ALMOCO = 4;
+    public static final int REF_3_4_JANTAR = 5;
+    public static final int REF_4_4_CAFE = 6;
+    public static final int REF_4_4_ALMOCO = 7;
+    public static final int REF_4_4_JANTAR = 8;
 
     private static final String [] refItens =
             {   "02/04 - Café da manhã", "02/04 - Almoço", "02/04 - Jantar",
@@ -47,6 +47,7 @@ public class Monitoria {
 
     // Participantes
     private static HashMap<String, String> participantes = new HashMap<>();
+    private static String participanteCPF;
 
     public static void Inicializar() {
         // Insere os dados dos monitores
@@ -65,7 +66,7 @@ public class Monitoria {
         monitores.put("62166010326", "NILS MENDES TAVARES");
 
         // Insere os dados dos participantes
-        monitores.put("05543271123", "Herbert de Souza Andrade");
+        participantes.put("05543271123", "Herbert de Souza Andrade");
     }
 
     public static boolean validarMonitor(String cpf) {
@@ -86,6 +87,7 @@ public class Monitoria {
 
     public static void setAtividade(int atividade) {
         Monitoria.atividade = atividade;
+        Monitoria.refeicao = -1;
     }
 
     public static int getAtividade() {
@@ -98,6 +100,7 @@ public class Monitoria {
 
     public static void setRefeicoes(int refeicao) {
         Monitoria.refeicao = refeicao;
+        Monitoria.atividade = -1;
     }
 
     public static int getRefeicoes() {
@@ -106,5 +109,21 @@ public class Monitoria {
 
     public static String[] getRefItens() {
         return Monitoria.refItens;
+    }
+
+    public static void setParticipanteCPF(String cpf){
+        participanteCPF = cpf;
+    }
+
+    public static String getParticipanteCPF() {
+        return participanteCPF;
+    }
+
+    public static String getParticipanteNome() {
+        return Monitoria.participantes.get(Monitoria.participanteCPF);
+    }
+
+    public static boolean validarParticipante() {
+        return participantes.containsKey(participanteCPF);
     }
 }

@@ -1,6 +1,7 @@
 package com.hfad.monitorapet;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -45,7 +46,12 @@ public class QrCodeActivity extends Activity implements ZXingScannerView.ResultH
         Log.v(TAG, rawResult.getText()); // Prints scan results
         Log.v(TAG, rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)        Toast.makeText(this, rawResult.getText(), Toast.LENGTH_LONG);
 
+        Monitoria.setParticipanteCPF(rawResult.getText());
+
+        Intent i = new Intent(this, ConfirmaActivity.class);
+        startActivity(i);
+
         // If you would like to resume scanning, call this method below:
-        mScannerView.resumeCameraPreview(this);
+        //mScannerView.resumeCameraPreview(this);
     }
 }

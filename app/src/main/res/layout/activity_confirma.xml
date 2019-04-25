@@ -4,46 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PesquisaCpfActivity"
-    android:weightSum="5"
-    android:orientation="vertical">
-
+    tools:context=".ConfirmaActivity"
+    android:orientation="vertical"
+    >
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <ImageView
+        android:src="@drawable/ic_user_icon"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"/>
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
     <TextView
-        android:textSize="16dp"
-        android:text="@string/cpf_participante"
+        android:id="@+id/confirmaNome"
+        android:textSize="24sp"
+        android:text="Nome"
         android:textAlignment="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <android.support.v4.widget.Space
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/confirmaCpf"
+        android:textSize="24sp"
+        android:text="CPF"
+        android:layout_marginTop="15dp"
+        android:textAlignment="center"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-    <EditText
-        android:id="@+id/editCpf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content"/>
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
     <Button
-        android:id="@+id/btnPesquisar"
-        android:text="Pesquisar"
+        android:id="@+id/btnConfirmar"
+        android:text="Confirmar"
         android:layout_width="200sp"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:background="#ff3333"
         android:textColor="#ffffff"
-        android:onClick="onPesquisar"/>
+        android:onClick="onConfirmar"/>
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-
+    <Button
+        android:id="@+id/btnVoltar"
+        android:text="Voltar"
+        android:layout_width="200sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:background="#ff3333"
+        android:textColor="#ffffff"
+        android:onClick="onVoltar"/>
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 </LinearLayout>
