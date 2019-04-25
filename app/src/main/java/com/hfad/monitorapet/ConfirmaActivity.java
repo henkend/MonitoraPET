@@ -26,8 +26,6 @@ public class ConfirmaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirma);
 
-        System.out.println("Validar CPF:"+Monitoria.getParticipanteCPF());
-
         if (Monitoria.validarParticipante()) {
             TextView tvNome = (TextView) findViewById(R.id.confirmaNome);
             TextView tvCpf = (TextView) findViewById(R.id.confirmaCpf);
