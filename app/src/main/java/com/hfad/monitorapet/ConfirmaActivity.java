@@ -36,6 +36,10 @@ public class ConfirmaActivity extends AppCompatActivity {
             tvCpf.setText(Monitoria.getParticipanteCPF());
         }
 
+        lerArquivo();
+
+        TextView tvDados = (TextView) findViewById(R.id.dados);
+        tvDados.setText(dados);
     }
 
     public void onConfirmar(View view) {
@@ -43,6 +47,63 @@ public class ConfirmaActivity extends AppCompatActivity {
         lerArquivo();
 
         // Adiciona o novo registro
+
+        switch (Monitoria.getCredenciar()) {
+            case Monitoria.ATIVIDADE:
+                dados = dados + "Atividade\t";
+
+                switch (Monitoria.getAtividade()) {
+                    case Monitoria.ATV_ED_ED:
+                        dados = dados + "ED/ED\t";
+                        break;
+                    case Monitoria.ATV_MESA_1:
+                        dados = dados + "Mesa Redonda 1\t";
+                        break;
+                    case Monitoria.ATV_MESA_2:
+                        dados = dados + "Mesa Redonda 1\t";
+                        break;
+                    case Monitoria.ATV_EA_EIMCLAA:
+                        dados = dados + "EA/EIMCLAA\t";
+                        break;
+                }
+            break;
+
+            case Monitoria.REFEICOES:
+                dados = dados + "Refeições\t";
+
+                switch (Monitoria.getRefeicoes()) {
+                    case Monitoria.REF_2_4_CAFE:
+                        dados = dados + "02/04 - Café da manhã\t";
+                        break;
+                    case Monitoria.REF_2_4_ALMOCO:
+                        dados = dados + "02/04 - Almoço\t";
+                        break;
+                    case Monitoria.REF_2_4_JANTAR:
+                        dados = dados + "02/04 - Jantar\t";
+                        break;
+                    case Monitoria.REF_3_4_CAFE:
+                        dados = dados + "03/04 - Café da manhã\t";
+                        break;
+                    case Monitoria.REF_3_4_ALMOCO:
+                        dados = dados + "03/04 - Almoço\t";
+                        break;
+                    case Monitoria.REF_3_4_JANTAR:
+                        dados = dados + "03/04 - Jantar\t";
+                        break;
+                    case Monitoria.REF_4_4_CAFE:
+                        dados = dados + "04/04 - Café da manhã\t";
+                        break;
+                    case Monitoria.REF_4_4_ALMOCO:
+                        dados = dados + "04/04 - Almoço\t";
+                        break;
+                    case Monitoria.REF_4_4_JANTAR:
+                        dados = dados + "04/04 - Jantar\t";
+                        break;
+                }
+            break;
+        }
+
+        // Adiciona o participante desse registro
         dados = dados + Monitoria.getParticipanteCPF() + "\t" + Monitoria.getParticipanteNome() + "\n";
 
         // Salva os dados
