@@ -25,7 +25,7 @@ public class PesquisaCpfActivity extends AppCompatActivity {
             startActivity(i);
         }
         else {
-            Toast.makeText(this, "CPF Inválido!", Toast.LENGTH_LONG );
+            Toast.makeText(this, "CPF Inválido!", Toast.LENGTH_LONG ).show();
         }
     }
 }

@@ -2,6 +2,9 @@ package com.hfad.monitorapet;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,11 +18,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class ConfirmaActivity extends AppCompatActivity {
 
     private String DATA_FILE = "credenciamento.txt";
-    private String dados;
+    private String dados = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +39,13 @@ public class ConfirmaActivity extends AppCompatActivity {
             tvNome.setText(Monitoria.getParticipanteNome());
             tvCpf.setText(Monitoria.getParticipanteCPF());
         }
-
-        lerArquivo();
-
-        TextView tvDados = (TextView) findViewById(R.id.dados);
-        tvDados.setText(dados);
     }
 
     public void onConfirmar(View view) {
         // Recebe os dados salvos
         lerArquivo();
+
+        System.out.println("Dados: " + dados);
 
         // Adiciona o novo registro
 
@@ -102,13 +105,14 @@ public class ConfirmaActivity extends AppCompatActivity {
         }
 
         // Adiciona o participante desse registro
-        dados = dados + Monitoria.getParticipanteCPF() + "\t" + Monitoria.getParticipanteNome() + "\n";
+        dados = dados + Monitoria.getParticipanteCPF() + "\t" + Monitoria.getParticipanteNome();
 
         // Salva os dados
         salvarArquivo();
 
         // Finaliza a atividade
         Intent i = new Intent(this, FormaActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
 
@@ -117,14 +121,18 @@ public class ConfirmaActivity extends AppCompatActivity {
     }
 
     private void lerArquivo(){
-        // Leitura do arquivo existente
-        FileInputStream in = null;
         try {
-            // Efetua a leiura do arquivo existente
-            in = new FileInputStream(DATA_FILE);
-            byte[] buffer = new byte[ in.available() ];
-            in.read(buffer);
-            in.close();
+            File storage = Environment.getExternalStoragePublicDirectory(Environment.MEDIA_SHARED);
+            File directory = new File(storage.getAbsolutePath() + "/ECOPET");
+            directory.mkdirs();
+            File file = new File(directory, DATA_FILE);
+
+            FileInputStream fIn = new FileInputStream(file);
+            InputStreamReader isr = new InputStreamReader(fIn);
+
+            byte[] buffer = new byte[ fIn.available() ];
+            fIn.read(buffer);
+            fIn.close();
             dados = new String(buffer, "UTF-8");
         } catch (FileNotFoundException e) {
             // Exibe erro em caso o arquivo não exista
@@ -134,24 +142,34 @@ public class ConfirmaActivity extends AppCompatActivity {
             // Exibe erro em caso tente saber o tamanho do arquivo que não existe
             Log.e("FILE", "Erro ao ler o tamanho do arquivo credenciamento.txt");
             e.printStackTrace();
-        } finally {
-            if ( in != null ) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 
     private void salvarArquivo() {
-
-        FileOutputStream out = null;
-
         try{
-            out = new FileOutputStream(DATA_FILE);
-            out.write(dados.getBytes());
+            File storage = Environment.getExternalStoragePublicDirectory(Environment.MEDIA_SHARED);
+            File directory = new File(storage.getAbsolutePath() + "/ECOPET");
+            directory.mkdirs();
+            File file = new File(directory, DATA_FILE);
+            FileOutputStream fOut = new FileOutputStream(file);
+
+            OutputStreamWriter osw = new OutputStreamWriter(fOut);
+
+            osw.write(dados);
+            osw.flush();
+            osw.write("\r\n");
+            osw.flush();
+            osw.close();
+
+            // Tell the media scanner about the new file so that it is
+            // immediately available to the user.
+            MediaScannerConnection.scanFile(this, new String[] { file.toString() }, null,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+                        Log.i("ExternalStorage", "Scanned " + path + ":");
+                        Log.i("ExternalStorage", "-> uri=" + uri);
+                    }
+                });
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
