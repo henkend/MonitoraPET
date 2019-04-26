@@ -17,6 +17,7 @@ import static android.widget.Toast.*;
 public class MainActivity extends AppCompatActivity {
 
     private EditText user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,22 +25,20 @@ public class MainActivity extends AppCompatActivity {
 
           user = (EditText) findViewById(R.id.user);
         Monitoria.Inicializar();
-        }
+    }
 
-        public void clicar (View v){
+    public void clicar (View v){
 
         String valor=user.getText().toString();
 
-
         if(Monitoria.validarMonitor(valor)){
+            Monitoria.setMonitor(valor);
             Intent intent = new Intent(getApplicationContext(), listaP.class);
             startActivity(intent);
         }
         else{
 
             Toast.makeText(MainActivity. this,"Usuário não cadastrado!", LENGTH_LONG). show();
-
-
         }
 
 

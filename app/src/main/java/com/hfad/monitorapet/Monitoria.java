@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class Monitoria {
     private static HashMap<String, String> monitores = new HashMap<>();
+    private static String monitor = "";
 
     // Primeira opção
     public static final int ATIVIDADE = 0;
@@ -125,5 +126,13 @@ public class Monitoria {
 
     public static boolean validarParticipante() {
         return participantes.containsKey(participanteCPF);
+    }
+
+    public static void setMonitor(String cpf) {
+        Monitoria.monitor = cpf;
+    }
+
+    public static String getMonitor() {
+        return Monitoria.monitor;
     }
 }

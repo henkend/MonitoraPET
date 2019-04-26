@@ -24,7 +24,7 @@ import java.io.OutputStreamWriter;
 
 public class ConfirmaActivity extends AppCompatActivity {
 
-    private String DATA_FILE = "credenciamento.txt";
+    private String DATA_FILE = Monitoria.getMonitor()+" - credenciamento.txt";
     private String dados = "";
 
     @Override
