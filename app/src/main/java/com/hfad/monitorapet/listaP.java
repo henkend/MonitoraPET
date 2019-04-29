@@ -2,10 +2,7 @@ package com.hfad.monitorapet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +16,7 @@ public class listaP extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_p);
-        listaP = (ListView) findViewById(R.id.list1);
+        listaP = (ListView) findViewById(R.id.list2);
         ArrayAdapter<String> meuAdaptador = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, android.R.id.text1, Monitoria.getCredItens());
         listaP.setAdapter(meuAdaptador);
 
@@ -31,6 +28,8 @@ public class listaP extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), listaATV.class);
                     startActivity(intent);
                 }
+
+
                 else {
                     Monitoria.setCredenciar(Monitoria.REFEICOES);
                     Intent intent = new Intent(getApplicationContext(), listaREF.class);

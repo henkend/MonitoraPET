@@ -3,4 +3,8 @@
     <string name="title_activity_main">Basic Activity</string>
     <string name="forma_credenciar">Método de Credenciamento</string>
     <string name="cpf_participante">CPF do Participante</string>
+    <string name="title_activity_visitante_p">visitanteP</string>
+    <string name="title_activity_visitante_atv">visitanteATV</string>
+    <string name="title_activity_visitante_map">visitanteMAP</string>
+    <string name="title_activity_visitante_reg">visitanteREG</string>
 </resources>

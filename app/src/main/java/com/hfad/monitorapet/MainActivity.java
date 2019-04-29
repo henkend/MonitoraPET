@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void clicar2 (View v){
+            Intent intent = new Intent(getApplicationContext(), visitanteP.class);
+            startActivity(intent);
+
+    }
 
 
 }
