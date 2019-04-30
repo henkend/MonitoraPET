@@ -15,9 +15,12 @@ public class listaATV extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_p);
+
+        listaAdapter adapter = new listaAdapter(this, R.layout.row, Monitoria.getAtvItens(), null);
+
         listaATV = (ListView) findViewById(R.id.list2);
-        ArrayAdapter<String> meuAdaptador = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, android.R.id.text1, Monitoria.getAtvItens());
-        listaATV.setAdapter(meuAdaptador);
+        listaATV.setAdapter(adapter);
+
 
         listaATV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -50,16 +50,19 @@
             android:layout_gravity="center_vertical"
             android:onClick="clicar"
             android:text="Entrar"
-            android:textColor="#000000" />
+            android:textColor="#ffffff"
+            android:background="#00b050"/>
 
         <Button
             android:id="@+id/visitante"
             android:layout_width="100dp"
             android:layout_height="53dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
             android:onClick="clicar2"
             android:text="Visitante"
-            android:textColor="#000000" />
+            android:textColor="#ffffff"
+            android:background="#00b050"/>
     </LinearLayout>
 
     <android.support.v4.widget.Space

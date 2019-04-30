@@ -15,9 +15,11 @@ public class listaREF extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_p);
+
+        listaAdapter adapter = new listaAdapter(this, R.layout.row, Monitoria.getRefItens(), null);
+
         listaREF = (ListView) findViewById(R.id.list2);
-        ArrayAdapter<String> meuAdaptador = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, android.R.id.text1, Monitoria.getRefItens());
-        listaREF.setAdapter(meuAdaptador);
+        listaREF.setAdapter(adapter);
 
         listaREF.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

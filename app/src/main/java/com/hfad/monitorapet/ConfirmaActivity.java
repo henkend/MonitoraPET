@@ -24,7 +24,7 @@ import java.io.OutputStreamWriter;
 
 public class ConfirmaActivity extends AppCompatActivity {
 
-    private String DATA_FILE = Monitoria.getMonitor()+" - credenciamento.txt";
+    private String DATA_FILE = "credenciamento.txt";
     private String dados = "";
 
     @Override
@@ -32,80 +32,104 @@ public class ConfirmaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirma);
 
-        if (Monitoria.validarParticipante()) {
-            TextView tvNome = (TextView) findViewById(R.id.confirmaNome);
-            TextView tvCpf = (TextView) findViewById(R.id.confirmaCpf);
+        TextView tvNome = (TextView) findViewById(R.id.confirmaNome);
 
+        if (Monitoria.validarParticipante()) {
             tvNome.setText(Monitoria.getParticipanteNome());
-            tvCpf.setText(Monitoria.getParticipanteCPF());
+        } else {
+            tvNome.setText("Não registrado");
         }
+
+        TextView tvCpf = (TextView) findViewById(R.id.confirmaCpf);
+        tvCpf.setText(Monitoria.getParticipanteCPF());
     }
 
     public void onConfirmar(View view) {
         // Recebe os dados salvos
         lerArquivo();
 
-        System.out.println("Dados: " + dados);
-
         // Adiciona o novo registro
-
         switch (Monitoria.getCredenciar()) {
             case Monitoria.ATIVIDADE:
-                dados = dados + "Atividade\t";
+                dados = dados + "Atividade;";
 
                 switch (Monitoria.getAtividade()) {
+                    case Monitoria.ATV_ABERTURA:
+                        dados = dados + "Abertura;";
+                        break;
                     case Monitoria.ATV_ED_ED:
-                        dados = dados + "ED/ED\t";
+                        dados = dados + "ED/ED;";
                         break;
                     case Monitoria.ATV_MESA_1:
-                        dados = dados + "Mesa Redonda 1\t";
+                        dados = dados + "Mesa Redonda 1;";
                         break;
                     case Monitoria.ATV_MESA_2:
-                        dados = dados + "Mesa Redonda 1\t";
+                        dados = dados + "Mesa Redonda 2;";
+                        break;
+                    case Monitoria.ATV_APS_BANNER:
+                        dados = dados + "Apresentacao de Banner;";
                         break;
                     case Monitoria.ATV_EA_EIMCLAA:
-                        dados = dados + "EA/EIMCLAA\t";
+                        dados = dados + "EA/EIMCLAA;";
+                        break;
+                    case Monitoria.ATV_MOBILIZA:
+                        dados = dados + "Mobiliza PET;";
+                        break;
+                    case Monitoria.ATV_APS_ORAL:
+                        dados = dados + "Apresentacao Oral;";
+                        break;
+                    case Monitoria.ATV_MINI_OFI:
+                        dados = dados + "Minicursos / Oficinas;";
+                        break;
+                    case Monitoria.ATV_BOLO:
+                        dados = dados + "Tcha com bolo;";
+                        break;
+                    case Monitoria.ATV_GDT:
+                        dados = dados + "GDT's;";
+                        break;
+                    case Monitoria.ATV_ASSEMBLEIA:
+                        dados = dados + "Assembleia Final;";
                         break;
                 }
             break;
 
             case Monitoria.REFEICOES:
-                dados = dados + "Refeições\t";
+                dados = dados + "Refeicoes\t";
 
                 switch (Monitoria.getRefeicoes()) {
                     case Monitoria.REF_2_4_CAFE:
-                        dados = dados + "02/04 - Café da manhã\t";
+                        dados = dados + "02/04 - Cafe da manha;";
                         break;
                     case Monitoria.REF_2_4_ALMOCO:
-                        dados = dados + "02/04 - Almoço\t";
+                        dados = dados + "02/04 - Almoco;";
                         break;
                     case Monitoria.REF_2_4_JANTAR:
-                        dados = dados + "02/04 - Jantar\t";
+                        dados = dados + "02/04 - Jantar;";
                         break;
                     case Monitoria.REF_3_4_CAFE:
-                        dados = dados + "03/04 - Café da manhã\t";
+                        dados = dados + "03/04 - Cafe da manha;";
                         break;
                     case Monitoria.REF_3_4_ALMOCO:
-                        dados = dados + "03/04 - Almoço\t";
+                        dados = dados + "03/04 - Almoco;";
                         break;
                     case Monitoria.REF_3_4_JANTAR:
-                        dados = dados + "03/04 - Jantar\t";
+                        dados = dados + "03/04 - Jantar;";
                         break;
                     case Monitoria.REF_4_4_CAFE:
-                        dados = dados + "04/04 - Café da manhã\t";
+                        dados = dados + "04/04 - Cafe da manha;";
                         break;
                     case Monitoria.REF_4_4_ALMOCO:
-                        dados = dados + "04/04 - Almoço\t";
+                        dados = dados + "04/04 - Almoco;";
                         break;
                     case Monitoria.REF_4_4_JANTAR:
-                        dados = dados + "04/04 - Jantar\t";
+                        dados = dados + "04/04 - Jantar;";
                         break;
                 }
             break;
         }
 
         // Adiciona o participante desse registro
-        dados = dados + Monitoria.getParticipanteCPF() + "\t" + Monitoria.getParticipanteNome();
+        dados = dados + Monitoria.getParticipanteCPF() + ";" + Monitoria.getParticipanteNome();
 
         // Salva os dados
         salvarArquivo();

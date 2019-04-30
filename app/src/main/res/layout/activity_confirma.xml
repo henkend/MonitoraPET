@@ -45,7 +45,7 @@
         android:layout_width="200sp"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:background="#ff3333"
+        android:background="#00b050"
         android:textColor="#ffffff"
         android:onClick="onConfirmar"/>
     <android.support.v4.widget.Space
@@ -58,7 +58,7 @@
         android:layout_width="200sp"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:background="#ff3333"
+        android:background="#00b050"
         android:textColor="#ffffff"
         android:onClick="onVoltar"/>
     <android.support.v4.widget.Space

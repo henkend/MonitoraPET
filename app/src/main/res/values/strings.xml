@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Monitora PET</string>
-    <string name="title_activity_main">Basic Activity</string>
+    <string name="app_name">Monitoria PET</string>
+    <string name="title_activity_main">Monitoria PET</string>
     <string name="forma_credenciar">Método de Credenciamento</string>
     <string name="cpf_participante">CPF do Participante</string>
     <string name="title_activity_visitante_p">visitanteP</string>

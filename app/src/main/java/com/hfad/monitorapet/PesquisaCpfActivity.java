@@ -19,13 +19,8 @@ public class PesquisaCpfActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editCpf);
         Monitoria.setParticipanteCPF(editText.getText().toString());
 
-        if ( Monitoria.validarParticipante() ) {
-            Monitoria.setParticipanteCPF(editText.getText().toString());
-            Intent i = new Intent(this, ConfirmaActivity.class);
-            startActivity(i);
-        }
-        else {
-            Toast.makeText(this, "CPF Inválido!", Toast.LENGTH_LONG ).show();
-        }
+        Monitoria.setParticipanteCPF(editText.getText().toString());
+        Intent i = new Intent(this, ConfirmaActivity.class);
+        startActivity(i);
     }
 }

@@ -2,12 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hfad.monitorapet">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,47 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAcPVAVt7Ij1UEm3ZmniraBSFRlhCevwig" />
-
-        <activity
-            android:name=".visitanteMAP"
-            android:label="@string/title_activity_visitante_map">
-        </activity>
-        <activity
-            android:name=".visitanteREG"
-            android:label="@string/title_activity_visitante_reg"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".visitanteATV"
-            android:label="@string/title_activity_visitante_atv"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".visitanteP"
-            android:label="@string/title_activity_visitante_p"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-        </activity>
         <activity android:name=".ConfirmaActivity" />
-        <activity android:name=".PesquisaCpfActivity" />
-        <activity android:name=".listaP" />
-        <activity android:name=".listaATV" />
-        <activity android:name=".listaREF" />
+        <activity android:name=".PesquisaCpfActivity"/>
+        <activity android:name=".listaP"/>
+        <activity android:name=".listaATV"/>
+        <activity android:name=".listaREF"/>
         <activity android:name=".FormaActivity" />
-        <activity android:name=".QrCodeActivity" />
+        <activity android:name=".QrCodeActivity"/>
+        <activity android:name=".visitanteATV"/>
+        <activity android:name=".visitanteMAP"/>
+        <activity android:name=".visitanteP"/>
+        <activity android:name=".visitanteREG"/>
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
