@@ -160,11 +160,13 @@ public class listaP extends AppCompatActivity {
             dados = new String(buffer, "UTF-8");
         } catch (FileNotFoundException e) {
             // Exibe erro em caso o arquivo não exista
+            Toast.makeText(getApplicationContext(), "Falha ao acessar o arquivo!", Toast.LENGTH_LONG).show();
             Log.e("FILE", "Não foi possível encontrar o arquivo credenciamento.txt");
             e.printStackTrace();
             errorMsg = e.getMessage();
         } catch (IOException e) {
             // Exibe erro em caso tente saber o tamanho do arquivo que não existe
+            Toast.makeText(getApplicationContext(), "Falha ao acessar o arquivo!", Toast.LENGTH_LONG).show();
             Log.e("FILE", "Erro ao ler o tamanho do arquivo credenciamento.txt");
             e.printStackTrace();
             errorMsg = e.getMessage();
