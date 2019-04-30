@@ -99,5 +99,4 @@
         android:textColor="#999999"
         android:layout_margin="@dimen/text_margin"
         android:textSize="15sp" />
-
 </LinearLayout>
