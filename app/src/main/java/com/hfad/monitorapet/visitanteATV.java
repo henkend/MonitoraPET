@@ -18,39 +18,69 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Map.*;
+
 public class visitanteATV extends AppCompatActivity {
+    listaAdapter2 adaptador;
+    private String[] hora1 = {"07:00h às 13:30h", "14:00h às 14:30h", "14:30h às 15:00h", "15:00h às 17:15h", "17:15h às 18:45h","18:45h em diante"};
+    private String[] atv1 = {"Credenciamento", "– Cerimônia de Abertura", "Apresentação Cultural", "Palestra de Abertura", "Encontro de Discentes e Encontro de Docentes", "Livre (Bares, cinema)"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitante_atv);
-        Button but2 = (Button) findViewById(R.id.button2);
-        FrameLayout ff = (FrameLayout) findViewById(R.id.ff);
+        Button but1 = (Button) findViewById(R.id.button);
+         Button but2 = (Button) findViewById(R.id.button2);
+         Button but3 = (Button) findViewById(R.id.button3);
+        Button but4 = (Button) findViewById(R.id.button4);
+        final ListView l1 = (ListView) findViewById(R.id.list1);
+        final ListView l2 = (ListView) findViewById(R.id.list2);
+        final ListView l3 = (ListView) findViewById(R.id.list3);
+        final ListView l4 = (ListView) findViewById(R.id.list4);
+        final FrameLayout f1 = (FrameLayout) findViewById(R.id.f1);
+        final FrameLayout f2 = (FrameLayout) findViewById(R.id.f2);
+        final FrameLayout f3 = (FrameLayout) findViewById(R.id.f3);
+        final FrameLayout f4 = (FrameLayout) findViewById(R.id.f4);
 
-        ListView results = (ListView) findViewById(R.id.list1);
-        HashMap<String, String> name = new HashMap<>();
-        name.put("07:00h às 13:30h(FAMEVZ)", "Credenciamento");
-        name.put("14:00h às 14:30h(Centro Cultural)", "Cerimônia de Abertura");
-        name.put("14:30h às 15:00h(Centro Cultural)", "Apresentação Cultural");
-        name.put("15:00h às 17:15h (Centro Cultural)", "Palestra de Abertura");
-        name.put("17:15h às 18:45h(IGHD)", "Encontro de Discentes e Encontro de Docentes");
-        name.put("18:45h em diante", "Livre (Bares, cinema)");
+        adaptador = new listaAdapter2(getApplicationContext(), R.layout.list_item, hora1 ,atv1 );
+        l1.setAdapter(adaptador);
 
-        List<HashMap<String, String>> listItems = new ArrayList<>();
-        SimpleAdapter adapter = new SimpleAdapter(this, listItems, R.layout.list_item, new String[]{"First Line", "Second Line"}, new int[]{R.id.text1, R.id.text2});
+        but1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f1.setVisibility(View.VISIBLE);
+                f2.setVisibility(View.INVISIBLE);
+                f3.setVisibility(View.INVISIBLE);
+                f4.setVisibility(View.INVISIBLE);
+            }
+        });
 
-        Iterator it = name.entrySet().iterator();
-        while (it.hasNext()){
-         HashMap<String,String> result = new HashMap<>();
-            Map.Entry pair = (Map.Entry)it.next();
-            result.put("First Line", pair.getKey().toString());
-            result.put("Second Line", pair.getValue().toString());
-            listItems.add(result);
-        }
-        results.setAdapter(adapter);
         but2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ff.setVisibility(View.INVISIBLE);
+                f2.setVisibility(View.VISIBLE);
+                f1.setVisibility(View.INVISIBLE);
+                f3.setVisibility(View.INVISIBLE);
+                f4.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        but3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f3.setVisibility(View.VISIBLE);
+                f1.setVisibility(View.INVISIBLE);
+                f2.setVisibility(View.INVISIBLE);
+                f4.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        but4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                f4.setVisibility(View.VISIBLE);
+                f1.setVisibility(View.INVISIBLE);
+                f3.setVisibility(View.INVISIBLE);
+                f2.setVisibility(View.INVISIBLE);
             }
         });
 
