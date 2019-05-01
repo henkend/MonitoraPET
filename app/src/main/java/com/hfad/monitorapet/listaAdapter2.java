@@ -13,12 +13,14 @@ public class listaAdapter2 extends ArrayAdapter<String> {
     Context context;
     int layoutResourceId;
     String data[] = null;
+    String data2[] = null;
 
-    public listaAdapter2(Context context, int resource, String[] data, String[] img) {
+    public listaAdapter2(Context context, int resource, String[] data, String[] data2) {
         super(context, resource, data);
         this.context = context;
         this.layoutResourceId = resource;
         this.data = data;
+        this.data2 = data2;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class listaAdapter2 extends ArrayAdapter<String> {
 
         // get the data from the data array
         String item = data[position];
-        String item2 = data[position];
+        String item2 = data2[position];
 
         // setting the view to reflect the data we need to display
         name.setText(item);
