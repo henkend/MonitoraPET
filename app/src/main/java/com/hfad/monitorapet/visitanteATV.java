@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -21,6 +23,8 @@ public class visitanteATV extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visitante_atv);
+        Button but2 = (Button) findViewById(R.id.button2);
+        FrameLayout ff = (FrameLayout) findViewById(R.id.ff);
 
         ListView results = (ListView) findViewById(R.id.list1);
         HashMap<String, String> name = new HashMap<>();
@@ -43,5 +47,14 @@ public class visitanteATV extends AppCompatActivity {
             listItems.add(result);
         }
         results.setAdapter(adapter);
+        but2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ff.setVisibility(View.INVISIBLE);
+            }
+        });
+
     }
-}
+
+    }
+
